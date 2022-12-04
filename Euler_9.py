@@ -22,12 +22,12 @@ result = 0
 base = 1
 a = b = base
 
-while(b < 500):
+while b < 500:
     c = 1000 - (a + b)
-    if (a**2 + b**2 == c**2):
+    if a ** 2 + b ** 2 == c ** 2:
         result = a * b * c
         break
-    if (a < b):
+    if a < b:
         a += 1
     else:
         b += 1
@@ -35,6 +35,3 @@ while(b < 500):
 
 print("The solution is " + str(result))
 print("--- %s seconds ---" % (time.time() - start_time))
-
-
-
