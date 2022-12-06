@@ -70,10 +70,7 @@ start_time = time.time()
 
 result = 0
 
-file_input = read_file()
-all_rows = get_all_rows(file_input)
-all_diagonals_right = get_diagonal_right(all_rows)
-all_diagonals_left = get_diagonal_left(all_rows)
+all_rows = get_all_rows(read_file())
 
 for row in all_rows:
     for i in range(0, GRID_SIZE - 3):
@@ -83,10 +80,10 @@ for col in get_all_cols(all_rows):
     for i in range(0, GRID_SIZE - 3):
         result = max(result, math.prod(col[i:i+4]))
 
-for diagonal in all_diagonals_right:
+for diagonal in get_diagonal_right(all_rows):
     result = max(result, math.prod(diagonal))
 
-for diagonal in all_diagonals_left:
+for diagonal in get_diagonal_left(all_rows):
     result = max(result, math.prod(diagonal))
 
 print("The solution is " + str(result))
