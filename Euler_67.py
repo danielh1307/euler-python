@@ -56,33 +56,34 @@ start_time = time.time()
 all_arrays = f_all_arrays()
 
 curr_numbers = all_arrays[0]
-curr_directions = [['s']]
+# remove comments to get the actual directions
+#curr_directions = [['s']]
 next_numbers = []
-next_directions = []
+#next_directions = []
 
 for row_num in range(1, len(all_arrays)):
     next_numbers = []
-    next_directions = []
+    #next_directions = []
     for col_num in range(0, len(all_arrays[row_num])):
         if col_num == 0:
             # first number, always add with first number from row above
             next_numbers.append(all_arrays[row_num][0] + curr_numbers[0])
-            next_directions.append(append_to_array(curr_directions[0][:], 'l'))
+            #next_directions.append(append_to_array(curr_directions[0][:], 'l'))
         elif col_num == len(all_arrays[row_num]) - 1:
             # last number, always add with last number from row above
             next_numbers.append(all_arrays[row_num][col_num] + curr_numbers[-1])
-            next_directions.append(append_to_array(curr_directions[-1][:], 'r'))
+            #next_directions.append(append_to_array(curr_directions[-1][:], 'r'))
         elif curr_numbers[col_num - 1] >= curr_numbers[col_num]:
             next_numbers.append(all_arrays[row_num][col_num] + curr_numbers[col_num - 1])
-            next_directions.append(append_to_array(curr_directions[col_num - 1][:], 'r'))
+            #next_directions.append(append_to_array(curr_directions[col_num - 1][:], 'r'))
         else:
             next_numbers.append(all_arrays[row_num][col_num] + curr_numbers[col_num])
-            next_directions.append(append_to_array(curr_directions[col_num][:], 'l'))
-    curr_directions = next_directions
+            #next_directions.append(append_to_array(curr_directions[col_num][:], 'l'))
+    #curr_directions = next_directions
     curr_numbers = next_numbers
 
 result = max(curr_numbers)
-print(curr_directions[curr_numbers.index(result)])
+#print(curr_directions[curr_numbers.index(result)])
 
 print("The solution is " + str(result))
 print("--- %s seconds ---" % (time.time() - start_time))

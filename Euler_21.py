@@ -8,15 +8,7 @@
 # Evaluate the sum of all the amicable numbers under 10000.
 
 import time
-
-
-def get_divisors(x):
-    divisors = []
-    for j in range(1, int(x / 2) + 1):
-        if x % j == 0:
-            divisors.append(j)
-
-    return divisors
+from Euler_Functions import get_factors
 
 
 start_time = time.time()
@@ -25,11 +17,11 @@ d = {}
 amicable = []
 for i in range(1, 10001):
     if i not in d.keys():
-        d[i] = sum(get_divisors(i))
+        d[i] = sum(get_factors(i, False))
     if d[i] > 10000:
         continue
     if d[i] not in d.keys():
-        d[d[i]] = sum(get_divisors(d[i]))
+        d[d[i]] = sum(get_factors(d[i], False))
     if d[d[i]] == i and i != d[i]:
         amicable.append(i)
 

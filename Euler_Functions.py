@@ -12,7 +12,7 @@ def is_prime(number):
     return True
 
 
-def get_factors(number):
+def get_factors(number, with_number=True):
     factors = [1]
     if number == 1:
         return factors
@@ -27,7 +27,10 @@ def get_factors(number):
             if r != i:
                 factors.append(int(i))
 
-    factors.append(number)
+    if with_number:
+        factors.append(number)
+
+    factors.sort()
     return factors
 
 
